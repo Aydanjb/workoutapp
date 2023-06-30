@@ -1,0 +1,30 @@
+.body {
+    -fx-background-color: #121212;
+}
+
+.logoContainer {
+    -fx-background-color: #212121;
+    -fx-alignment: center;
+}
+
+.body Text {
+    -fx-font-size: 2em;
+    -fx-fill: #F7F7F7;
+}
+
+.loginContainer {
+    -fx-background-color: #212121;
+    -fx-padding: 4px;
+}
+
+.loginContainer .header {
+    -fx-font-size: 2em;
+}
+
+.loginContainer .subHeader {
+    -fx-font-size: 1em;
+}
+
+.loginContainer Label {
+    -fx-text-fill: #E1E1E1;
+}

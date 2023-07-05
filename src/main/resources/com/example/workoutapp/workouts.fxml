@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="body" prefHeight="600.0" prefWidth="900.0" styleClass="body" stylesheets="@styles/workouts.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.workoutapp.Workouts">
+   <children>
+      <HBox prefHeight="600.0" prefWidth="900.0">
+         <children>
+            <VBox prefHeight="600.0" prefWidth="500.0" styleClass="workoutHistoryContainer">
+               <children>
+                  <TableView prefHeight="600.0" prefWidth="500.0" styleClass="workoutHistoryTable">
+                    <columns>
+                      <TableColumn prefWidth="150.0" styleClass="tableColumn" text="Exercise" />
+                        <TableColumn prefWidth="75.0" styleClass="tableColumn" text="Weight" />
+                      <TableColumn prefWidth="55.0" styleClass="tableColumn" text="Sets" />
+                        <TableColumn prefWidth="55.0" styleClass="tableColumn" text="Reps" />
+                        <TableColumn prefWidth="100.0" styleClass="tableColumn" text="Date" />
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </children></VBox>
+            <VBox alignment="CENTER" prefHeight="600.0" prefWidth="400.0" styleClass="workoutSelectionContainer">
+               <children>
+                  <Label alignment="CENTER" prefWidth="350.0" text="What exercises have you done?" textAlignment="CENTER">
+                     <VBox.margin>
+                        <Insets bottom="50.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Label>
+                  <MenuButton fx:id="exerciseDropDown" mnemonicParsing="false" prefHeight="6.0" prefWidth="305.0" text="Exercise" />
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="350.0" styleClass="exerciseSelectionContainer">
+                     <children>
+                        <TextField fx:id="weightTextField" alignment="CENTER" promptText="Weight">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </TextField>
+                        <TextField fx:id="setsTextField" alignment="CENTER" promptText="Sets" />
+                        <TextField fx:id="repsTextField" alignment="CENTER" promptText="Reps" />
+                     </children>
+                  </HBox>
+                  <Button fx:id="addBtn" alignment="CENTER" mnemonicParsing="false" prefWidth="305.0" text="Add exercise" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

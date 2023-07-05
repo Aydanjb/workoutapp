@@ -6,11 +6,19 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+
+/* TODO:
+*   -Add scene changing to loginBtnOnAction method
+*
+*   Stretch Goals:
+*   -Add registration page
+*   -Add user hierarchy
+*/
+
 public class LoginController {
 
     @FXML

@@ -9,7 +9,6 @@ public class Exercise {
     private int weight;
     private int sets;
     private int reps;
-
     private Date dateCompleted;
 
     public Exercise(long id, String exercise, int weight, int sets, int reps) {

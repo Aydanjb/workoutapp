@@ -1,10 +1,9 @@
 package com.example.workoutapp;
 
-import javafx.scene.chart.PieChart;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ExerciseDAOImpl implements ExerciseDAO{
 
@@ -40,13 +39,13 @@ public class ExerciseDAOImpl implements ExerciseDAO{
     }
 
     @Override
-    public List<Exercise> getAll() throws SQLException {
+    public ObservableList<Exercise> getAll() throws SQLException {
         DatabaseConnection connect = new DatabaseConnection();
         Connection connectDB = connect.getConnection();
 
         String query = "SELECT id, exercise, weight, sets, reps, date_completed FROM exercises";
 
-        List<Exercise> exercises = new ArrayList<>();
+        ObservableList<Exercise> exercises = FXCollections.observableArrayList();
 
         Statement statement = connectDB.createStatement();
         ResultSet queryResult = statement.executeQuery(query);

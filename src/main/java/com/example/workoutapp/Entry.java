@@ -2,7 +2,7 @@ package com.example.workoutapp;
 
 import java.sql.Date;
 
-public class Exercise {
+public class Entry {
 
     private long id;
     private String exercise;
@@ -11,7 +11,7 @@ public class Exercise {
     private int reps;
     private Date dateCompleted;
 
-    public Exercise(long id, String exercise, int weight, int sets, int reps) {
+    public Entry(long id, String exercise, int weight, int sets, int reps) {
         this.id = id;
         this.exercise = exercise;
         this.weight = weight;
@@ -19,7 +19,7 @@ public class Exercise {
         this.reps = reps;
         this.dateCompleted = new Date(System.currentTimeMillis());
     }
-    public Exercise(long id, String exercise, int weight, int sets, int reps, Date dateCompleted) {
+    public Entry(long id, String exercise, int weight, int sets, int reps, Date dateCompleted) {
         this.id = id;
         this.exercise = exercise;
         this.weight = weight;
@@ -71,7 +71,7 @@ public class Exercise {
 
     @Override
     public String toString() {
-        return "Exercise{" +
+        return "Entry{" +
                 "id=" + id +
                 ", exercise='" + exercise + '\'' +
                 ", weight=" + weight +

@@ -5,15 +5,15 @@ import javafx.collections.ObservableList;
 
 import java.sql.*;
 
-public class ExerciseDAOImpl implements ExerciseDAO{
+public class EntryDAOImpl implements EntryDAO {
 
     @Override
-    public Exercise get(int id) throws SQLException {
+    public Entry get(int id) throws SQLException {
         DatabaseConnection connect = new DatabaseConnection();
         Connection connectDB = connect.getConnection();
-        Exercise exercise = null;
+        Entry entry = null;
 
-        String query = "SELECT id, exercise, weight, sets, reps, date_completed FROM exercises WHERE id = ?";
+        String query = "SELECT id, exercise, weight, sets, reps, date_completed FROM entries WHERE id = ?";
 
         try {
             PreparedStatement preparedStatement = connectDB.prepareStatement(query);
@@ -28,24 +28,24 @@ public class ExerciseDAOImpl implements ExerciseDAO{
                 int reps = queryResult.getInt("reps");
                 Date dateCompleted = queryResult.getDate("date_completed");
 
-                exercise = new Exercise(oid, exerciseName, weight, sets, reps, dateCompleted);
+                entry = new Entry(oid, exerciseName, weight, sets, reps, dateCompleted);
             }
         }
         catch (Exception e) {
             e.printStackTrace();
         }
 
-        return exercise;
+        return entry;
     }
 
     @Override
-    public ObservableList<Exercise> getAll() throws SQLException {
+    public ObservableList<Entry> getAll() throws SQLException {
         DatabaseConnection connect = new DatabaseConnection();
         Connection connectDB = connect.getConnection();
 
-        String query = "SELECT id, exercise, weight, sets, reps, date_completed FROM exercises";
+        String query = "SELECT id, exercise, weight, sets, reps, date_completed FROM entries";
 
-        ObservableList<Exercise> exercises = FXCollections.observableArrayList();
+        ObservableList<Entry> entries = FXCollections.observableArrayList();
 
         Statement statement = connectDB.createStatement();
         ResultSet queryResult = statement.executeQuery(query);
@@ -58,29 +58,29 @@ public class ExerciseDAOImpl implements ExerciseDAO{
             int reps = queryResult.getInt("reps");
             Date dateCompleted = queryResult.getDate("date_completed");
 
-            Exercise exercise = new Exercise(id, exerciseName, weight, sets, reps, dateCompleted);
-            exercises.add(exercise);
+            Entry entry = new Entry(id, exerciseName, weight, sets, reps, dateCompleted);
+            entries.add(entry);
         }
-        return exercises;
+        return entries;
     }
 
     @Override
-    public int save(Exercise exercise) throws SQLException {
+    public int save(Entry entry) throws SQLException {
         return 0;
     }
 
     @Override
-    public int insert(Exercise exercise) throws SQLException {
+    public int insert(Entry entry) throws SQLException {
         DatabaseConnection connect = new DatabaseConnection();
         Connection connectDB = connect.getConnection();
 
-        String query = "INSERT INTO exercises (exercise, weight, sets, reps) VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO entries (exercise, weight, sets, reps) VALUES (?, ?, ?, ?)";
 
         PreparedStatement preparedStatement = connectDB.prepareStatement(query);
-        preparedStatement.setString(1, exercise.getExercise());
-        preparedStatement.setInt(2, exercise.getWeight());
-        preparedStatement.setInt(3, exercise.getSets());
-        preparedStatement.setInt(4, exercise.getReps());
+        preparedStatement.setString(1, entry.getExercise());
+        preparedStatement.setInt(2, entry.getWeight());
+        preparedStatement.setInt(3, entry.getSets());
+        preparedStatement.setInt(4, entry.getReps());
 
         int result = preparedStatement.executeUpdate();
 
@@ -91,19 +91,19 @@ public class ExerciseDAOImpl implements ExerciseDAO{
     }
 
     @Override
-    public int update(Exercise exercise) throws SQLException {
+    public int update(Entry entry) throws SQLException {
         DatabaseConnection connect = new DatabaseConnection();
         Connection connectDB = connect.getConnection();
 
-        String query = "UPDATE exercises SET exercise = ?, weight = ?, sets = ?, reps = ?, date_completed = ? WHERE id = ?";
+        String query = "UPDATE entries SET exercise = ?, weight = ?, sets = ?, reps = ?, date_completed = ? WHERE id = ?";
 
         PreparedStatement preparedStatement = connectDB.prepareStatement(query);
-        preparedStatement.setString(1, exercise.getExercise());
-        preparedStatement.setInt(2, exercise.getWeight());
-        preparedStatement.setInt(3, exercise.getSets());
-        preparedStatement.setInt(4, exercise.getReps());
-        preparedStatement.setDate(5, exercise.getDateCompleted());
-        preparedStatement.setLong(6, exercise.getId());
+        preparedStatement.setString(1, entry.getExercise());
+        preparedStatement.setInt(2, entry.getWeight());
+        preparedStatement.setInt(3, entry.getSets());
+        preparedStatement.setInt(4, entry.getReps());
+        preparedStatement.setDate(5, entry.getDateCompleted());
+        preparedStatement.setLong(6, entry.getId());
 
         int result = preparedStatement.executeUpdate();
 
@@ -114,14 +114,14 @@ public class ExerciseDAOImpl implements ExerciseDAO{
     }
 
     @Override
-    public int delete(Exercise exercise) throws SQLException {
+    public int delete(Entry entry) throws SQLException {
         DatabaseConnection connect = new DatabaseConnection();
         Connection connectDB = connect.getConnection();
 
-        String query = "DELETE FROM exercises WHERE id = ?";
+        String query = "DELETE FROM entries WHERE id = ?";
 
         PreparedStatement preparedStatement = connectDB.prepareStatement(query);
-        preparedStatement.setLong(1, exercise.getId());
+        preparedStatement.setLong(1, entry.getId());
 
         int result = preparedStatement.executeUpdate();
 

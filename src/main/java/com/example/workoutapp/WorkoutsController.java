@@ -23,34 +23,34 @@ public class WorkoutsController {
     @FXML
     private MenuButton exerciseDropDown;
     @FXML
-    private TableView<Exercise> exerciseTable;
+    private TableView<Entry> exerciseTable;
     @FXML
-    private TableColumn<Exercise, String> exerciseCol;
+    private TableColumn<Entry, String> exerciseCol;
     @FXML
-    private TableColumn<Exercise, Integer> weightCol;
+    private TableColumn<Entry, Integer> weightCol;
     @FXML
-    private TableColumn<Exercise, Integer> setsCol;
+    private TableColumn<Entry, Integer> setsCol;
     @FXML
-    private TableColumn<Exercise, Integer> repsCol;
+    private TableColumn<Entry, Integer> repsCol;
     @FXML
-    private TableColumn<Exercise, Date> dateCol;
+    private TableColumn<Entry, Date> dateCol;
 
     @FXML
     private void initialize() throws SQLException {
-        showExercises();
+        showEntries();
     }
 
-    public void showExercises() throws SQLException {
-        ExerciseDAO exerciseDAO = new ExerciseDAOImpl();
-        ObservableList<Exercise> exercises = exerciseDAO.getAll();
+    public void showEntries() throws SQLException {
+        EntryDAO entryDAO = new EntryDAOImpl();
+        ObservableList<Entry> entries = entryDAO.getAll();
 
-        exerciseCol.setCellValueFactory(new PropertyValueFactory<Exercise, String>("exercise"));
-        weightCol.setCellValueFactory(new PropertyValueFactory<Exercise, Integer>("weight"));
-        setsCol.setCellValueFactory(new PropertyValueFactory<Exercise, Integer>("sets"));
-        repsCol.setCellValueFactory(new PropertyValueFactory<Exercise, Integer>("reps"));
-        dateCol.setCellValueFactory(new PropertyValueFactory<Exercise, Date>("dateCompleted"));
+        exerciseCol.setCellValueFactory(new PropertyValueFactory<Entry, String>("exercise"));
+        weightCol.setCellValueFactory(new PropertyValueFactory<Entry, Integer>("weight"));
+        setsCol.setCellValueFactory(new PropertyValueFactory<Entry, Integer>("sets"));
+        repsCol.setCellValueFactory(new PropertyValueFactory<Entry, Integer>("reps"));
+        dateCol.setCellValueFactory(new PropertyValueFactory<Entry, Date>("dateCompleted"));
 
-        exerciseTable.setItems(exercises);
+        exerciseTable.setItems(entries);
     }
 
     public void addBtnOnAction(ActionEvent e) throws IOException {

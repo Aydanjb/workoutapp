@@ -4,6 +4,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.ComboBoxListCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
@@ -21,7 +22,7 @@ public class WorkoutsController {
     @FXML
     private TextField repsTextField;
     @FXML
-    private MenuButton exerciseDropDown;
+    private ComboBox<String> exerciseDropDown;
     @FXML
     private TableView<Entry> exerciseTable;
     @FXML
@@ -38,6 +39,7 @@ public class WorkoutsController {
     @FXML
     private void initialize() throws SQLException {
         showEntries();
+        getExercises();
     }
 
     public void showEntries() throws SQLException {
@@ -51,6 +53,15 @@ public class WorkoutsController {
         dateCol.setCellValueFactory(new PropertyValueFactory<Entry, Date>("dateCompleted"));
 
         exerciseTable.setItems(entries);
+    }
+
+    public void getExercises() throws SQLException {
+        ExerciseDAO exerciseDAO = new ExerciseDAOImpl();
+        ObservableList<Exercise> exercises = exerciseDAO.getAll();
+
+        for (int i = 0; i < exercises.size() - 1; i++) {
+            exerciseDropDown.getItems().add(exercises.get(i).getName());
+        }
     }
 
     public void addBtnOnAction(ActionEvent e) throws IOException {

@@ -4,10 +4,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.ComboBoxListCell;
 import javafx.scene.control.cell.PropertyValueFactory;
-
-import java.io.IOException;
+import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
 
@@ -64,11 +62,30 @@ public class WorkoutsController {
         }
     }
 
-    public void addBtnOnAction(ActionEvent e) throws IOException {
-
+    public void addBtnOnAction(ActionEvent e) throws SQLException {
+        if(!weightTextField.getText().isBlank() && !setsTextField.getText().isBlank() && !repsTextField.getText().isBlank()) {
+            processInput();
+        }
+        else {
+            System.out.println("blank text fields");
+        }
     }
 
-    public void validateInput() {
+    public void processInput() throws SQLException {
+        DatabaseConnection connect = new DatabaseConnection();
+        Connection connectDB = connect.getConnection();
+        EntryDAO entryDAO = new EntryDAOImpl();
 
+        long id = 0;
+        String exercise = exerciseDropDown.getValue();
+        int weight = Integer.parseInt(weightTextField.getText());
+        int sets = Integer.parseInt(setsTextField.getText());
+        int reps = Integer.parseInt(repsTextField.getText());
+
+        Entry entry = new Entry(id, exercise, weight, sets, reps);
+
+        entryDAO.insert(entry);
+
+        showEntries();
     }
 }

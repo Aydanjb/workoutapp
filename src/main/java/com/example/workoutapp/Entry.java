@@ -19,6 +19,7 @@ public class Entry {
         this.reps = reps;
         this.dateCompleted = new Date(System.currentTimeMillis());
     }
+
     public Entry(long id, String exercise, int weight, int sets, int reps, Date dateCompleted) {
         this.id = id;
         this.exercise = exercise;
@@ -33,32 +34,16 @@ public class Entry {
         return exercise;
     }
 
-    public void setExercise(String exercise) {
-        this.exercise = exercise;
-    }
-
     public int getReps() {
         return reps;
-    }
-
-    public void setReps(int reps) {
-        this.reps = reps;
     }
 
     public int getSets() {
         return sets;
     }
 
-    public void setSets(int sets) {
-        this.sets = sets;
-    }
-
     public int getWeight() {
         return weight;
-    }
-
-    public void setWeight(int weight) {
-        this.weight = weight;
     }
 
     public long getId() {

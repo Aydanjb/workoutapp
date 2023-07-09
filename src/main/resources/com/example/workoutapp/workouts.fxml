@@ -53,7 +53,7 @@
                         <TextField fx:id="repsTextField" alignment="CENTER" promptText="Reps" />
                      </children>
                   </HBox>
-                  <Button fx:id="addBtn" alignment="CENTER" mnemonicParsing="false" prefWidth="305.0" text="Add entry" />
+                  <Button fx:id="addBtn" alignment="CENTER" mnemonicParsing="false" onAction="#addBtnOnAction" prefWidth="305.0" text="Add entry" />
                </children>
             </VBox>
          </children>

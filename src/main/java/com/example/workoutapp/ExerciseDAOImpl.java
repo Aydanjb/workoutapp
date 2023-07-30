@@ -5,10 +5,11 @@ import javafx.collections.ObservableList;
 
 import java.sql.*;
 
+// Implements CRUD methods for the Exercise class
 public class ExerciseDAOImpl implements ExerciseDAO {
 
     @Override
-    public Object get(int id) throws SQLException {
+    public Exercise get(int id) throws SQLException {
         DatabaseConnection connect = new DatabaseConnection();
         Connection connectDB = connect.getConnection();
         Exercise exercise = null;
@@ -52,22 +53,22 @@ public class ExerciseDAOImpl implements ExerciseDAO {
     }
 
     @Override
-    public int save(Object o) throws SQLException {
+    public int save(Exercise exercise) throws SQLException {
         return 0;
     }
 
     @Override
-    public int insert(Object o) throws SQLException {
+    public int insert(Exercise exercise) throws SQLException {
         return 0;
     }
 
     @Override
-    public int update(Object o) throws SQLException {
+    public int update(Exercise exercise) throws SQLException {
         return 0;
     }
 
     @Override
-    public int delete(Object o) throws SQLException {
+    public int delete(Exercise exercise) throws SQLException {
         return 0;
     }
 }

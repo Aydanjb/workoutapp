@@ -3,13 +3,14 @@ package com.example.workoutapp;
 import javax.xml.transform.Result;
 import java.sql.*;
 
+// Connects to a postgresql database
 public class DatabaseConnection {
     public Connection databaseLink;
 
     public Connection getConnection() {
         String databaseName = "workoutapp";
         String databaseUser = "postgres";
-        String databasePassword = "aydjb802";
+        String databasePassword = "root";
         String url = "jdbc:postgresql://localhost:5432/" + databaseName;
 
         try {

@@ -1,5 +1,6 @@
 package com.example.workoutapp;
 
+// Model class for Exercises
 public class Exercise {
 
     private long id;

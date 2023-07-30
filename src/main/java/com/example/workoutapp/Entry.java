@@ -2,6 +2,7 @@ package com.example.workoutapp;
 
 import java.sql.Date;
 
+// Model class for Entries
 public class Entry {
 
     private long id;

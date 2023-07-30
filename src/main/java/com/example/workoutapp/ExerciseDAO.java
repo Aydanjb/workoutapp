@@ -1,4 +1,5 @@
 package com.example.workoutapp;
 
-public interface ExerciseDAO extends DAO{
+// Stub for if I need to add Exercise specific methods
+public interface ExerciseDAO extends DAO<Exercise> {
 }

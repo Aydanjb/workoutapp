@@ -15,7 +15,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-
+//
 public class LoginController {
 
     @FXML
@@ -27,6 +27,7 @@ public class LoginController {
     @FXML
     private Button loginBtn;
 
+    // When the login button is clicked login information is validated and scene is changed
     public void loginBtnOnAction(ActionEvent e) throws IOException {
         if(!usernameTextField.getText().isBlank() && !passwordPasswordField.getText().isBlank()) {
             validateLogin();

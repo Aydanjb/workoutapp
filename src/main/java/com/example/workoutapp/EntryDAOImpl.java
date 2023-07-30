@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 
 import java.sql.*;
 
+// Implements CRUD methods for the Entry class
 public class EntryDAOImpl implements EntryDAO {
 
     @Override

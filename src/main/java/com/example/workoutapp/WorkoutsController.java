@@ -34,12 +34,14 @@ public class WorkoutsController {
     @FXML
     private TableColumn<Entry, Date> dateCol;
 
+    // Displays entries and populates exercise drop-down when scene loads
     @FXML
     private void initialize() throws SQLException {
         showEntries();
         getExercises();
     }
 
+    // Adds all existing entries in the database to the display table
     public void showEntries() throws SQLException {
         EntryDAO entryDAO = new EntryDAOImpl();
         ObservableList<Entry> entries = entryDAO.getAll();
@@ -53,6 +55,7 @@ public class WorkoutsController {
         exerciseTable.setItems(entries);
     }
 
+    // Populates the exercise drop-down menu with exercises in the database
     public void getExercises() throws SQLException {
         ExerciseDAO exerciseDAO = new ExerciseDAOImpl();
         ObservableList<Exercise> exercises = exerciseDAO.getAll();
@@ -62,6 +65,7 @@ public class WorkoutsController {
         }
     }
 
+    // When the add button is clicked inserts a new entry into the database and refreshes the display table
     public void addBtnOnAction(ActionEvent e) throws SQLException {
         if(!weightTextField.getText().isBlank() && !setsTextField.getText().isBlank() && !repsTextField.getText().isBlank()) {
             processInput();
@@ -71,6 +75,7 @@ public class WorkoutsController {
         }
     }
 
+    // Inserts a new entry into the database and refreshes display table
     public void processInput() throws SQLException {
         DatabaseConnection connect = new DatabaseConnection();
         Connection connectDB = connect.getConnection();

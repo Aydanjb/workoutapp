@@ -1,6 +1,4 @@
 package com.example.workoutapp;
-
-import javax.xml.transform.Result;
 import java.sql.*;
 
 // Connects to a postgresql database
